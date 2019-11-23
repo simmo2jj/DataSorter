@@ -1,0 +1,3 @@
+Stark|Eddard|Male|Gray|1/1/2001
+Stark|Catelyn|Female|Red|1/2/2001
+Lannister|Tyrion|Male|Gold|2/1/2002
