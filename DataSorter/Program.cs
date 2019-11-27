@@ -23,11 +23,6 @@ namespace DataSorter
 
 
             Console.WriteLine("");
-
-            //string filePipe = "InputFiles\\Pipe.txt";
-            //string fileComma = "InputFiles\\Comma.txt";
-            //string fileSpace = "InputFiles\\Space.txt";
-
             SortAndOutput(BuildPersonList(filePipe, fileComma, fileSpace));
 
             Console.Read();
@@ -61,25 +56,14 @@ namespace DataSorter
             {
                 var data = File.ReadLines(pFilePath);
 
-
                 foreach (var row in data)
                 {
                     var rowArray = row.Split(pDelimeter);
                     pPeople.Add(new Person(rowArray[0], rowArray[1], rowArray[2], rowArray[3], rowArray[4]));
                 }
             }
-            catch (IndexOutOfRangeException e)
-            {
-                Console.WriteLine("Incomplete data row exists in " + pFilePath);
-            }
-            catch (FormatException e)
-            {
-                Console.WriteLine("Data row with incorrect format exists in " + pFilePath);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("Error reading and parsing file: " + e.Message);
-            }
+            catch (Exception e) { Console.WriteLine("Error reading and parsing file: " + e.Message); }
+           
         }
 
         public static List<Person> sortByGender(List<Person> pPeople)
@@ -89,7 +73,7 @@ namespace DataSorter
             Console.WriteLine("Sorted by Gender");
             foreach (Person person in pPeople)
             {
-                Console.WriteLine(person.PersonGender.ToString() + " " + person.LastName + " " + person.FirstName + " " + person.FavoriteColor + " " + person.DateOfBirth);
+                Console.WriteLine(person.PersonGender.ToString() + " " + person.LastName + " " + person.FirstName + " " + person.FavoriteColor + " " + person.DateOfBirth.ToString("MM/dd/yyyy"));
             }
 
             return pPeople;
@@ -103,7 +87,7 @@ namespace DataSorter
             Console.WriteLine("Sorted by Birth Date");
             foreach (Person person in pPeople)
             {
-                Console.WriteLine(person.DateOfBirth + " " + person.LastName + " " + person.FirstName + " " + person.PersonGender.ToString() + " " + person.FavoriteColor);
+                Console.WriteLine(person.DateOfBirth.ToString("MM/dd/yyyy") + " " + person.LastName + " " + person.FirstName + " " + person.PersonGender.ToString() + " " + person.FavoriteColor);
             }
 
             return pPeople;
@@ -111,13 +95,13 @@ namespace DataSorter
 
         public static List<Person> sortByName(List<Person> pPeople)
         {
-            pPeople = pPeople.OrderByDescending(p => p.LastName).ThenBy(x => x.FirstName).ToList();
+            pPeople = pPeople.OrderByDescending(p => p.LastName).ThenByDescending(x => x.FirstName).ToList();
 
             Console.WriteLine("");
             Console.WriteLine("Sorted by Name");
             foreach (Person person in pPeople)
             {
-                Console.WriteLine(person.LastName + " " + person.FirstName + " " + person.PersonGender.ToString() + " " +  person.FavoriteColor + " " + person.DateOfBirth);
+                Console.WriteLine(person.LastName + " " + person.FirstName + " " + person.PersonGender.ToString() + " " +  person.FavoriteColor + " " + person.DateOfBirth.ToString("MM/dd/yyyy"));
             }
 
             return pPeople;

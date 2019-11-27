@@ -9,10 +9,6 @@ namespace DataSorter
 {
     public class Person
     {
-        public Person()
-        {
-
-        }
         public Person(string pLastName, string pFirstName, string pGender, string pFavoriteColor, string pDateOfBirth)
         {
             LastName = pLastName;
@@ -44,5 +40,4 @@ namespace DataSorter
         Male,
         Unknown
     }
-
 }

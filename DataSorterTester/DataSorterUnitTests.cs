@@ -12,6 +12,12 @@ namespace DataSorterTester
     {
 
         [TestMethod]
+        public void BuildPersonList()
+        {
+            Assert.IsTrue(Program.BuildPersonList("InputFiles\\Pipe.txt", "InputFiles\\Comma.txt", "InputFiles\\Space.txt").Count >= 9);
+        }
+
+        [TestMethod]
         public void SpaceDelimitedPeoplePopulated()
         {
             string file = "InputFiles\\Space.txt";
@@ -92,10 +98,12 @@ namespace DataSorterTester
 
             List<Person> lSortedPeople = Program.sortByName(lPeople);
 
-            lPeople = lPeople.OrderByDescending(p => p.LastName).ThenBy(x => x.FirstName).ToList();
+            lPeople = lPeople.OrderByDescending(p => p.LastName).ThenByDescending(x => x.FirstName).ToList();
 
 
             Assert.IsTrue(lPeople.SequenceEqual(lSortedPeople));
         }
+
+
     }
 }
