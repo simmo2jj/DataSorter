@@ -1,0 +1,35 @@
+﻿@model List<DataSorterAPI.Models.PersonViewModel>
+
+@{
+    ViewBag.Title = "People";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>SortedPeople</h2>
+
+<p>
+    @Html.ActionLink("Add Person", "AddPerson")
+</p>
+<table class="table">
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PersonGender)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FavoriteColor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateOfBirth)
+        </td>
+    </tr>
+}
+
+</table>

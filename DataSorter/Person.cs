@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace DataSorter
 {
     public class Person
@@ -19,6 +20,7 @@ namespace DataSorter
             FavoriteColor = pFavoriteColor;
             DateOfBirth = Convert.ToDateTime(pDateOfBirth);
 
+
             switch (pGender)
             {
                 case "Male": PersonGender = Gender.Male; break;
@@ -32,7 +34,7 @@ namespace DataSorter
         public string FirstName { get; set; }
         public Gender PersonGender { get; set; }
         public string FavoriteColor { get; set; }
-        public DateTime DateOfBirth { get; set; }
+        public DateTime DateOfBirth { get; set; } 
 
 
     }
@@ -42,4 +44,5 @@ namespace DataSorter
         Male,
         Unknown
     }
+
 }
